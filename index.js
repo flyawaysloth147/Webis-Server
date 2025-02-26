@@ -11,7 +11,6 @@ const app = express();
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(express.static("./dist"));
 app.use(cors(corsOption));
 
 // MySQL Connection
@@ -72,6 +71,10 @@ const queryDatabase = (database, query, params, res, retryCount = 0) => {
     res.json(result);
   });
 };
+
+app.get("/", (req, res) => {
+  res.send("This is the webis server api");
+})
 
 app.get("/api/members", (req, res) => {
   let query = "SELECT * FROM members";
