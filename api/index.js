@@ -1,17 +1,17 @@
 const express = require("express");
 const mysql = require("mysql2");
 const bodyParser = require("body-parser");
-const path = require("path");
-const cors = require("cors");
+//const path = require("path");
+//const cors = require("cors");
 
-const corsOption = {
-  origin: ["http://localhost:5173", "https://webis.vercel.app/"],
-};
+//const corsOption = {
+//  origin: ["http://localhost:5173", "https://webis.vercel.app/"],
+//};
 const app = express();
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(cors(corsOption));
+//app.use(cors(corsOption));
 
 // MySQL Connection
 const pool = mysql.createPool({
