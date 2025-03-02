@@ -53,7 +53,9 @@ setInterval(() => {
   });
 }, 5 * 60 * 1000); // Runs every 5 minutes
 
-//app.listen(8080);
+app.listen(process.env.SERVER_PORT, () => {
+  console.info("Server started on port: " + process.env.SERVER_PORT);
+});
 
 const queryDatabase = (database, query, params, res, retryCount = 0) => {
   database.query(query, params, (err, result) => {
