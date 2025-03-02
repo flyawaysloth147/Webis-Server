@@ -1,6 +1,7 @@
 const express = require("express");
 const mysql = require("mysql2");
 const bodyParser = require("body-parser");
+const dotenv = require('dotenv');
 //const path = require("path");
 //const cors = require("cors");
 
@@ -11,6 +12,7 @@ const app = express();
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+dotenv.config();
 //app.use(cors(corsOption));
 
 // MySQL Connection
@@ -51,6 +53,8 @@ setInterval(() => {
   });
 }, 5 * 60 * 1000); // Runs every 5 minutes
 
+app.listen(8080);
+
 const queryDatabase = (database, query, params, res, retryCount = 0) => {
   database.query(query, params, (err, result) => {
     if (err) {
@@ -66,6 +70,7 @@ const queryDatabase = (database, query, params, res, retryCount = 0) => {
       res
         .status(500)
         .json({ error: "Database error after nultiple retry attemps" });
+      console.error(err);
     }
 
     res.json(result);
