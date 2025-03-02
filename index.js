@@ -53,7 +53,7 @@ setInterval(() => {
   });
 }, 5 * 60 * 1000); // Runs every 5 minutes
 
-app.listen(8080);
+//app.listen(8080);
 
 const queryDatabase = (database, query, params, res, retryCount = 0) => {
   database.query(query, params, (err, result) => {
